@@ -1,11 +1,10 @@
-const moongose = require('moongose');
+const mongoose = require('mongoose');
 
-const productSchema = new moongose.Schema({
-  Productname: {
+const productSchema = new mongoose.Schema({
+  productName: {
     type: String,
     required: [true, "Product Name is required"],
     minlength: [5, "Product Name must be atleast 5 character long"],
-    lowercase: true,
     trim: true, // if the user gives extra spaces then it will automatically remove it
   },
   price: {
@@ -15,11 +14,9 @@ const productSchema = new moongose.Schema({
   description: {
     type: String,
     minlength: [5, "Product Name must be atleast 5 character long"],
-    required: [true, "Description is required"]
   },
   productImage:{
     type: String,
-    required: [true, "Product Image is required"]
   },
   category: {
     type: String,
@@ -36,6 +33,6 @@ const productSchema = new moongose.Schema({
   timestamps: true
 });
 
-const Product = moongose.model("Product", productSchema); // collection
+const Product = mongoose.model("Product", productSchema); // collection
 
 module.exports = Product;
