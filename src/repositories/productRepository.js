@@ -1,6 +1,6 @@
 const Product = require("../schema/productSchema");
 
-async function addProduct(productDetails){
+async function createProduct(productDetails){
   try {
     const response = await Product.create(productDetails);
     return response;
@@ -9,6 +9,26 @@ async function addProduct(productDetails){
   }
 }
 
+async function findProductById(productId) { 
+  try {
+    const response = await Product.findById(productId);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function deleteProductById(productId) { 
+  try {
+    const response = await Product.findByIdAndDelete(productId);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
-  addProduct
+  createProduct,
+  findProductById,
+  deleteProductById
 }
