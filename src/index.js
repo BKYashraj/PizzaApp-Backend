@@ -1,4 +1,5 @@
 const express = require('express')
+const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const ServerConfig = require('./config/serverConfig')
 const connectDB = require('./config/dbConfig')
@@ -9,6 +10,8 @@ const authRouter = require('./routes/authRoute')
 
 const app = express()
 
+app.use(cookieParser()); // It is for accessing cookies on server
+
 // If request is in JSON, text, urlencoded it correctly reads by Express Server
 app.use(bodyParser.json());
 app.use(bodyParser.text());
@@ -17,6 +20,13 @@ app.use(bodyParser.urlencoded());
 app.use('/users', userRouter) ; // Connects Router to the Server
 app.use('/carts', cartRouter) ;
 app.use('/auth', authRouter) ;
+
+
+app.post('/ping', function (req, res) {
+  console.log(req.body);
+  console.log(req.cookies);
+  return res.json({ message:"Yashraj"});
+})
 
 app.listen(ServerConfig.PORT, async () => {
   await connectDB();
