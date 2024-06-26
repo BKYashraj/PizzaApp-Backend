@@ -1,17 +1,29 @@
 const Cart = require("../schema/cartSchema");
 
-async function createCart(userId){
+async function createCart(userId) {
   try {
     const newCart = await Cart.create({
-      user: userId
+      user: userId,
     });
     return newCart;
-
   } catch (error) {
     console.error(error);
   }
 }
 
-module.exports = {
-  createCart
+async function getCartByUserId(userId) {
+  try {
+    const newCart = await Cart.findOne({
+      user: userId,
+    });
+    return newCart;
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+
+module.exports = {
+  createCart,
+  getCartByUserId
+};

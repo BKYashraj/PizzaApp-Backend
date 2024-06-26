@@ -37,13 +37,13 @@ async function isLoggedIn(req, res, next) {
   next(); // move to next middleware
 }
 
-async function isAdmin(req, res, next) {
+function isAdmin(req, res, next) {
   const loggedInUser = req.user;
   if (loggedInUser.role == "ADMIN") {
     console.log("User is an admin");
 
     next();
-    
+
   } else {
     return res.status(401).json({
       success: false,
