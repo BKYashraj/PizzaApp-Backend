@@ -7,6 +7,11 @@ const productSchema = new mongoose.Schema({
     minlength: [5, "Product Name must be atleast 5 character long"],
     trim: true, // if the user gives extra spaces then it will automatically remove it
   },
+  quantity: {
+    type: Number,
+    required: [true, "Quantity is required"],
+    default: 10
+  },
   price: {
     type: Number,
     required: [true, "Price is required"]
