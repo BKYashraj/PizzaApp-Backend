@@ -22,8 +22,29 @@ async function getCartByUserId(userId) {
   }
 }
 
+async function clearCart(userId) {
+  try {
+    const cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      throw {
+        reason: "Cart not found",
+        statusCode: 404,
+      };
+    }
+
+    cart.items = [];
+
+    await cart.save();
+
+    return cart;
+    
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 module.exports = {
   createCart,
-  getCartByUserId
+  getCartByUserId,
+  clearCart,
 };

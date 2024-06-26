@@ -1,4 +1,4 @@
-const { getCartByUserId } = require("../repositories/cartRepository");
+const { getCartByUserId, clearCart } = require("../repositories/cartRepository");
 const { findProductById } = require("../repositories/productRepository");
 
 async function getCart(userId) {
@@ -85,7 +85,13 @@ async function modifyCart(userId, productId, shouldAdd = true) {
   return cart;
 }
 
+async function clearproductsFromCart(userId) {
+  const response = await clearCart(userId);
+  return response;
+}
+
 module.exports = {
   getCart,
   modifyCart,
+  clearproductsFromCart
 };
