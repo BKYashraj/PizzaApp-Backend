@@ -13,7 +13,6 @@ const orderRouter = require('./routes/orderRoute')
 
 const app = express()
 
-
 app.use(cookieParser()); // It is for accessing cookies on server ( When User sends request it also contain token to read that token we use cookie parser)
 
 // If request is in JSON, text, urlencoded it correctly reads by Express Server
@@ -26,13 +25,6 @@ app.use('/carts', cartRouter) ;
 app.use('/auth', authRouter) ;
 app.use('/products', productRouter) ;
 app.use('/orders', orderRouter) ;
-
-// app.get('/ping', isLoggedIn, (req, res) => {
-//   // controller
-//   console.log(req.body);
-//   console.log(req.cookies);
-//   return res.json({message: "pong"});
-// })
 
 app.listen(ServerConfig.PORT, async () => {
   await connectDB();
