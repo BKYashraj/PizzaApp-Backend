@@ -9,6 +9,7 @@ const cartRouter = require('./routes/cartRoute')
 const authRouter = require('./routes/authRoute')
 const productRouter = require('./routes/productRouter')
 const { isLoggedIn } = require('./validation/authValidator')
+const orderRouter = require('./routes/orderRoute')
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use('/users', userRouter) ; // Connects Router to the Server
 app.use('/carts', cartRouter) ;
 app.use('/auth', authRouter) ;
 app.use('/products', productRouter) ;
+app.use('/orders', orderRouter) ;
 
 // app.get('/ping', isLoggedIn, (req, res) => {
 //   // controller
