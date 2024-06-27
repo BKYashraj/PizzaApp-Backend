@@ -1,5 +1,8 @@
-const { clearCart, getCartByUserId } = require("../repositories/cartRepository");
-const { createNewOrder } = require("../repositories/orderRepository");
+const {
+  clearCart,
+  getCartByUserId,
+} = require("../repositories/cartRepository");
+const { createNewOrder, getOrdersByUserId, getOrderById, updateOrderStatus } = require("../repositories/orderRepository");
 const { findUser } = require("../repositories/userRepository");
 
 async function createOrder(userId, paymentMethod) {
@@ -51,6 +54,43 @@ async function createOrder(userId, paymentMethod) {
   return order;
 }
 
+async function getAllOrdersCreatedByUsers(userId) {
+  const orders = await getOrdersByUserId(userId);
+  if(!orders){
+    throw {
+      reason: "Cannot find Orders", 
+      statusCode: 500
+    }
+  }
+  return orders;
+}
+
+async function getOrderDetailById(orderId) {
+  const order = await getOrderById(orderId);
+  if(!order){
+    throw {
+      reason: "Cannot find Orders", 
+      statusCode: 500
+    }
+  }
+  return order;
+}
+
+async function updateOrder(orderId, status) {
+  const order = await updateOrderStatus(orderId, status);
+  if(!order){
+    throw {
+      reason: "Cannot find Orders", 
+      statusCode: 500
+    }
+  }
+  return order;
+}
+
+
 module.exports = {
   createOrder,
+  getAllOrdersCreatedByUsers,
+  getOrderDetailById,
+  updateOrder
 };
