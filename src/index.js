@@ -26,6 +26,13 @@ app.use('/auth', authRouter) ;
 app.use('/products', productRouter) ;
 app.use('/orders', orderRouter) ;
 
+app.get('/ping', (req, res) => {
+  // controller
+  console.log(req.body);
+  console.log(req.cookies);
+  return res.json({message: "pong"});
+});
+
 app.listen(ServerConfig.PORT, async () => {
   await connectDB();
   console.log(`Example app listening on port ${ServerConfig.PORT}...`);
