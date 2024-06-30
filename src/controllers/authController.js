@@ -23,7 +23,7 @@ async function login(req, res) {
 
     // After User login, we send JWT token in the form of cookie to user, so next time when he use any functionality he send this cookie to server then server gives direct access to the user for that functionality.
 
-    res.cookie("authToken", response, {
+    res.cookie("authToken", response.token, {
       httpOnly: true, // Because of httpOnly cookie, it is attached to every request from client to server after login
       secure: false,
       maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -32,7 +32,10 @@ async function login(req, res) {
     return res.status(200).json({
       success: true,
       message: "Successfully logged in",
-      data: {},
+      data: {
+        userData: response.userData,
+        userRole: response.userRole,
+      },
       error: {},
     });
   } catch (error) {

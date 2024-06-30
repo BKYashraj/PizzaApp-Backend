@@ -1,5 +1,6 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
+const cors = require('cors');
 const bodyParser = require('body-parser')
 const ServerConfig = require('./config/serverConfig')
 const connectDB = require('./config/dbConfig')
@@ -11,8 +12,13 @@ const productRouter = require('./routes/productRouter')
 const { isLoggedIn } = require('./validation/authValidator')
 const orderRouter = require('./routes/orderRoute')
 
+
 const app = express()
 
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}));
 app.use(cookieParser()); // It is for accessing cookies on server ( When User sends request it also contain token to read that token we use cookie parser)
 
 // If request is in JSON, text, urlencoded it correctly reads by Express Server
