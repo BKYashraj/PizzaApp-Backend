@@ -3,6 +3,7 @@ const {
   insertProduct,
   getProduct,
   deleteProducts,
+  getProducts,
 } = require("../controllers/productController");
 const uploader = require("../middlewares/multerMiddleware");
 const { isLoggedIn, isAdmin } = require("../validation/authValidator");
@@ -18,6 +19,8 @@ productRouter.post(
 );
 
 productRouter.get("/:id", getProduct);
+
+productRouter.get("/", getProducts);
 
 productRouter.delete("/:id", deleteProducts);
 

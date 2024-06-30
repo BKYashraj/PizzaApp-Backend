@@ -40,6 +40,13 @@ async function addProduct(productId) {
     else throw { reason: "Not able to find product", statusCode: 500 };
 }
 
+async function getAllProductsData() {
+  const product = await productRepository.getAllProducts();
+  if(product) return product;
+  else throw { reason: "Not able to find product", statusCode: 500 };
+}
+
+
 async function deleteProduct(productId) {
   const response = await deleteProductById(productId);
   if(response) return response;
@@ -50,5 +57,6 @@ async function deleteProduct(productId) {
 module.exports = {
   createProduct,
   addProduct,
-  deleteProduct
+  deleteProduct,
+  getAllProductsData
 };
