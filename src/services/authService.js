@@ -40,11 +40,15 @@ async function loginUser(authDetails) {
     JWT_SECRET,
     { expiresIn: JWT_EXPIRY }
   );
-
-  return {token, userRole, userData:{
-    email: user.email,
-    firstName: user.firstName,
-  }};
+  console.log("Token is ",token);
+  return {
+    token,
+    userRole,
+    userData: {
+      email: user.email,
+      firstName: user.firstName,
+    },
+  };
 }
 
 module.exports = {

@@ -19,6 +19,7 @@ app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true,
 }));
+
 app.use(cookieParser()); // It is for accessing cookies on server ( When User sends request it also contain token to read that token we use cookie parser)
 
 // If request is in JSON, text, urlencoded it correctly reads by Express Server
