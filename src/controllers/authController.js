@@ -6,9 +6,9 @@ async function logout(req, res) {
   res.cookie("authToken", "", {
     httpOnly: true,
     secure: true,
-    sameSite: 'none', // Helps prevent CSRF attacks
-    domain: "https://pizzayashrajfrontend.netlify.app/",
-    maxAge: 0,
+    sameSite: 'None', // Helps prevent CSRF attacks
+    domain: "pizzayashrajfrontend.netlify.app",
+    maxAge:  7 * 24 * 60 * 60 * 1000,
   });
 
   return res.status(200).json({
@@ -28,12 +28,12 @@ async function login(req, res) {
     // After User login, we send JWT token in the form of cookie to user, so next time when he use any functionality he send this cookie to server then server gives direct access to the user for that functionality.
     console.log("Response token is ",response.token);
     res.cookie("authToken", response.token, {
-      httpOnly: true, // Because of httpOnly cookie, it is attached to every request from client to server after login
+      httpOnly: true,
       secure: true,
-      sameSite: 'none', // Helps prevent CSRF attacks
-      domain: "https://pizzayashrajfrontend.netlify.app/",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+      sameSite: 'None',
+      domain: "pizzayashrajfrontend.netlify.app",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+  });
 
     return res.status(200).json({
       success: true,

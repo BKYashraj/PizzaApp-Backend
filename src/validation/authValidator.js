@@ -45,8 +45,8 @@ async function isLoggedIn(req, res, next) {
       res.cookie("authToken", "", {
         httpOnly: true,
         secure: true,
-        sameSite: 'none', // Helps prevent CSRF attacks
-        domain: "https://pizzayashrajfrontend.netlify.app/",
+        sameSite: 'None', // Helps prevent CSRF attacks
+        domain: "pizzayashrajfrontend.netlify.app",
         maxAge: 0,
       });
       return res.status(200).json({
