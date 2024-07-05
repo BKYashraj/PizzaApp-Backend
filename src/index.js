@@ -16,9 +16,9 @@ const orderRouter = require('./routes/orderRoute')
 const app = express()
 
 app.use(cors({
-  origin: ['https://pizzayashrajfrontend.netlify.app'],
-  methods: ["GET", "POST", "DELETE","PUT"],
-  credentials: true,
+  origin: 'https://pizza-app-frontend-tau.vercel.app',
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  credentials: true
 }));
 
 app.use(cookieParser()); // It is for accessing cookies on server ( When User sends request it also contain token to read that token we use cookie parser)

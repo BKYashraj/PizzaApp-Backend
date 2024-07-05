@@ -7,7 +7,7 @@ async function logout(req, res) {
     httpOnly: true,
     secure: true,
     sameSite: 'none', // Helps prevent CSRF attacks
-    domain: "https://pizzayashrajfrontend.netlify.app/",
+    domain: "pizza-app-frontend-tau.vercel.app",
     maxAge:  7 * 24 * 60 * 60 * 1000,
   });
 
@@ -31,7 +31,7 @@ async function login(req, res) {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
-      domain: "https://pizzayashrajfrontend.netlify.app/",
+      domain: "pizza-app-frontend-tau.vercel.app",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
   });
 
