@@ -17,6 +17,7 @@ const app = express()
 
 app.use(cors({
   origin: 'https://pizzayashrajfrontend.netlify.app',
+  methods: ["GET", "POST", "DELETE","PUT"],
   credentials: true,
 }));
 

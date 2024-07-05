@@ -6,8 +6,8 @@ async function logout(req, res) {
   res.cookie("authToken", "", {
     httpOnly: true,
     secure: true,
-    sameSite: 'Lax',
-    path: '/',
+    sameSite: 'none', // Helps prevent CSRF attacks
+    domain: "https://pizzayashrajfrontend.netlify.app/",
     maxAge: 0,
   });
 
@@ -30,8 +30,8 @@ async function login(req, res) {
     res.cookie("authToken", response.token, {
       httpOnly: true, // Because of httpOnly cookie, it is attached to every request from client to server after login
       secure: true,
-      sameSite: 'Lax',
-      path: '/',
+      sameSite: 'none', // Helps prevent CSRF attacks
+      domain: "https://pizzayashrajfrontend.netlify.app/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
