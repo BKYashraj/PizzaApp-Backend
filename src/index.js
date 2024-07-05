@@ -16,7 +16,7 @@ const orderRouter = require('./routes/orderRoute')
 const app = express()
 
 app.use(cors({
-  origin: 'https://pizzayashrajfrontend.netlify.app',
+  origin: ['https://pizzayashrajfrontend.netlify.app'],
   methods: ["GET", "POST", "DELETE","PUT"],
   credentials: true,
 }));

@@ -6,8 +6,8 @@ async function logout(req, res) {
   res.cookie("authToken", "", {
     httpOnly: true,
     secure: true,
-    sameSite: 'None', // Helps prevent CSRF attacks
-    domain: "pizzayashrajfrontend.netlify.app",
+    sameSite: 'none', // Helps prevent CSRF attacks
+    domain: "https://pizzayashrajfrontend.netlify.app/",
     maxAge:  7 * 24 * 60 * 60 * 1000,
   });
 
@@ -30,8 +30,8 @@ async function login(req, res) {
     res.cookie("authToken", response.token, {
       httpOnly: true,
       secure: true,
-      sameSite: 'None',
-      domain: "pizzayashrajfrontend.netlify.app",
+      sameSite: 'none',
+      domain: "https://pizzayashrajfrontend.netlify.app/",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
   });
 
