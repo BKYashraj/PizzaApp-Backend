@@ -45,6 +45,7 @@ async function isLoggedIn(req, res, next) {
       res.cookie("authToken", "", {
         httpOnly: true,
         secure: true,
+        sameSite: 'strict',
         // sameSite: 'none', 
         // domain: "pizza-app-frontend-tau.vercel.app",
         maxAge: 0,

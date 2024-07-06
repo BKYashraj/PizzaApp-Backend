@@ -6,6 +6,7 @@ async function logout(req, res) {
   res.cookie("authToken", "", {
     httpOnly: true,
     secure: true,
+    sameSite: 'strict',
     // sameSite: 'none', // Helps prevent CSRF attacks
     // domain: "pizza-app-frontend-tau.vercel.app",
     maxAge:  7 * 24 * 60 * 60 * 1000,
@@ -30,6 +31,7 @@ async function login(req, res) {
     res.cookie("authToken", response.token, {
       httpOnly: true,
       secure: true,
+      sameSite: 'strict',
       // sameSite: 'none',
       // domain: "pizza-app-frontend-tau.vercel.app",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
