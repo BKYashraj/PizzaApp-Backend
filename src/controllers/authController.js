@@ -2,7 +2,7 @@ const { loginUser } = require("../services/authService");
 
 async function logout(req, res) {
   console.log("Cookie", req.cookies);
-  
+  console.log("logout");
   res.cookie("authToken", "", {
     httpOnly: true,
     secure: true,
@@ -27,13 +27,13 @@ async function login(req, res) {
 
     // After User login, we send JWT token in the form of cookie to user, so next time when he use any functionality he send this cookie to server then server gives direct access to the user for that functionality.
     console.log("Response token is ",response.token);
-    res.cookie("authToken", response.token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
-      domain: "pizza-app-frontend-tau.vercel.app",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
-  });
+  //   res.cookie("authToken", response.token, {
+  //     httpOnly: true,
+  //     secure: true,
+  //     sameSite: 'none',
+  //     domain: "pizza-app-frontend-tau.vercel.app",
+  //     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+  // });
 
     return res.status(200).json({
       success: true,
