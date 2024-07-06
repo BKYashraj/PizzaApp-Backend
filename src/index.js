@@ -17,7 +17,7 @@ const app = express()
 
 app.use(cors({
   origin: 'https://pizza-app-frontend-tau.vercel.app',
-  methods: ["GET", "POST", "DELETE", "PUT"],
+  // methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true
 }));
 
