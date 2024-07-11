@@ -12,9 +12,13 @@ const productSchema = new mongoose.Schema({
     required: [true, "Quantity is required"],
     default: 10
   },
-  price: {
+  originalPrice: {
     type: Number,
     required: [true, "Price is required"]
+  },
+  discountedPrice: {
+    type: Number,
+    required: [true, "Discounted Price is required"]
   },
   description: {
     type: String,
@@ -33,7 +37,10 @@ const productSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
     required: [true, "In Stock status is required"]
-  }
+  },
+  discount:{
+    type: Number,
+  },
 },{
   timestamps: true
 });

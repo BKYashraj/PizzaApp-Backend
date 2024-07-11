@@ -4,11 +4,13 @@ async function insertProduct(req, res){
   try {
     const product = await createProduct({
       productName: req.body.productName,
-      price: req.body.price,
+      originalPrice: req.body.originalPrice,
+      discountedPrice: req.body.discountedPrice,
       description: req.body.description,
       imagePath: req.file?.path,  // ? is added because if file present then it works but if file means image not present it does not show error it works without image
       category: req.body.category,
-      instock: req.body.instock
+      instock: req.body.instock,
+      discount: req.body.discount,
     });
     return res.status(201).json({
       success: true,

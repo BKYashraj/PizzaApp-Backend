@@ -34,7 +34,7 @@ async function createOrder(userId, paymentMethod) {
   orderObject.totalPrice = 0;
 
   cart.items.forEach((cartItem) => {
-    orderObject.totalPrice += cartItem.quantity * cartItem.product.price;
+    orderObject.totalPrice += cartItem.quantity * cartItem.product.discountedPrice;
   });
 
   orderObject.address = user.address;
