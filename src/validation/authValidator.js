@@ -46,8 +46,6 @@ async function isLoggedIn(req, res, next) {
         httpOnly: true,
         secure: true,
         sameSite: 'none',
-        // sameSite: 'none', 
-        // domain: "pizza-app-frontend-tau.vercel.app",
         maxAge: 0,
       });
       return res.status(200).json({

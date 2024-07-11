@@ -7,8 +7,6 @@ async function logout(req, res) {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    // sameSite: 'none', // Helps prevent CSRF attacks
-    // domain: "pizza-app-frontend-tau.vercel.app",
     maxAge:  7 * 24 * 60 * 60 * 1000,
   });
 
@@ -32,9 +30,7 @@ async function login(req, res) {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
-      // sameSite: 'none',
-      // domain: "pizza-app-frontend-tau.vercel.app",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+      maxAge: 7 * 24 * 60 * 60 * 1000, 
   });
 
     return res.status(200).json({
