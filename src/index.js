@@ -16,7 +16,6 @@ const orderRouter = require('./routes/orderRoute')
 const app = express()
 
 app.use(cors({
-  // origin: "https://pizza-app-frontend-tau.vercel.app",
   origin: ServerConfig.ORIGIN_LINK,
   methods: ["GET", "POST", "DELETE", "PUT"],
   allowedHeaders: ["Content-Type"],
