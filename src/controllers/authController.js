@@ -3,11 +3,12 @@ const { loginUser } = require("../services/authService");
 async function logout(req, res) {
   console.log("Cookie", req.cookies);
   console.log("logout");
+  
   res.cookie("authToken", "", {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    maxAge:  7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000, // Setting maxAge but for an empty cookie
   });
 
   return res.status(200).json({
@@ -17,21 +18,20 @@ async function logout(req, res) {
     error: {},
   });
 }
---
+
 async function login(req, res) {
   try {
     const loginPayload = req.body;
-
     const response = await loginUser(loginPayload);
 
-    // After User login, we send JWT token in the form of cookie to user, so next time when he use any functionality he send this cookie to server then server gives direct access to the user for that functionality.
-    console.log("Response token is ",response.token);
+    // Send JWT token in the form of a cookie
+    console.log("Response token is ", response.token);
     res.cookie("authToken", response.token, {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
-      maxAge: 7 * 24 * 60 * 60 * 1000, 
-  });
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
 
     return res.status(200).json({
       success: true,
@@ -43,7 +43,7 @@ async function login(req, res) {
       error: {},
     });
   } catch (error) {
-    return res.status(error.statusCode).json({
+    return res.status(error.statusCode || 500).json({
       success: false,
       message: error.message,
       data: {},
