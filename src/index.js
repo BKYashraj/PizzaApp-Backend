@@ -17,10 +17,9 @@ const payment = require('./routes/payment');
 const app = express()
 
 app.use(cors({
-  // origin: ServerConfig.ORIGIN_LINK,
-   origin: '*',
+  origin: ServerConfig.ORIGIN_LINK,
   methods: ["GET", "POST", "DELETE", "PUT"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type"],
   credentials: true,
 }));
 
