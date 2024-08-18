@@ -19,7 +19,7 @@ const app = express()
 app.use(cors({
   origin: ServerConfig.ORIGIN_LINK,
   methods: ["GET", "POST", "DELETE", "PUT"],
-  allowedHeaders: ["Content-Type"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
 
