@@ -17,7 +17,7 @@ async function logout(req, res) {
     error: {},
   });
 }
-
+--
 async function login(req, res) {
   try {
     const loginPayload = req.body;

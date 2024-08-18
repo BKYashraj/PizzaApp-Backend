@@ -18,9 +18,11 @@ async function findProductById(productId) {
   }
 }
 
-async function getAllProducts() { 
+async function getAllProducts({ page = 1, limit = 10 }) {
   try {
-    const products = await Product.find({});
+    const products = await Product.find({})
+                                  .skip((page - 1) * limit)
+                                  .limit(limit);
     return products;
   } catch (error) {
     console.log(error);
