@@ -43,14 +43,14 @@ app.get('/ping', (req, res) => {
   return res.json({ message: "pong" });
 });
 
-// app.listen(ServerConfig.PORT, async () => {
-//   await connectDB();
-//   console.log(`Example app listening on port ${ServerConfig.PORT}...`);
+app.listen(ServerConfig.PORT, async () => {
+  await connectDB();
+  console.log(`Example app listening on port ${ServerConfig.PORT}...`);
 
-//   // Auto-request to keep the server alive
-//   setInterval(() => {
-//     axios.get(`https://pizzaapp-backend-nvm3.onrender.com/ping`)
-//       .then(() => console.log('Auto-ping sent to keep the server alive.'))
-//       .catch(error => console.error('Error in auto-ping:', error.message));
-//   }, 10 * 60 * 1000);  // Every 10 minutes
-// });
+  // Auto-request to keep the server alive
+  setInterval(() => {
+    axios.get(`https://pizzaapp-backend-nvm3.onrender.com/ping`)
+      .then(() => console.log('Auto-ping sent to keep the server alive.'))
+      .catch(error => console.error('Error in auto-ping:', error.message));
+  }, 10 * 60 * 1000);  // Every 10 minutes
+});
